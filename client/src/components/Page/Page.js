@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container} from 'semantic-ui-react';
 import SidebarButton from '../../containers/Sidebar/SidebarButton';
+import PageRouter from '../Router/PageRouter';
 
 const Page = (props) => {
     return (
@@ -8,6 +9,7 @@ const Page = (props) => {
             <SidebarButton
                 sidebarVisible={props.sidebarVisible}
                 handleToggle={props.handleToggleSidebar}/>
+            <PageRouter/>
         </Container>
     )
 };
