@@ -1,13 +1,14 @@
 import React from 'react';
 import {Container} from 'semantic-ui-react';
+import SidebarButton from '../../containers/Sidebar/SidebarButton';
 
 const Page = (props) => {
-    console.log(props);
-
     return (
         <Container fluid>
-            Page
-            <button type="button" onClick={props.handleToggleSidebar}>Toggle Sidebar</button>
+            <SidebarButton
+                sidebarVisible={props.sidebarVisible}
+                handleToggle={props.handleToggleSidebar}/>
+            Page Content / Route Components Rendered here.
         </Container>
     )
 };

@@ -15,19 +15,12 @@ class SidebarContainer extends Component {
 
     handleToggleSidebar = () => this.setState({visible: !this.state.visible});
 
-    // renderChildren(props) {
-    //     return React.Children.map(props.children, child => {
-    //         return React.cloneElement(child, {
-    //             handleToggleSidebar: props.handleToggleSidebar
-    //         })
-    //     });
-    // }
-
     render() {
         const {visible} = this.state;
         const childrenWithSidebar = React.Children.map(this.props.children, (child) =>
             React.cloneElement(child, {
-                handleToggleSidebar: this.handleToggleSidebar
+                handleToggleSidebar: this.handleToggleSidebar,
+                sidebarVisible: this.state.visible
             })
         );
         return (
