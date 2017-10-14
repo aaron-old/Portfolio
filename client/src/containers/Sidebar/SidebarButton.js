@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Icon} from 'semantic-ui-react';
+import {Icon, Menu} from 'semantic-ui-react';
+
+const styles = {
+    menu: {
+        border: "none"
+    }
+};
 
 class SidebarButton extends Component {
     constructor(props) {
@@ -16,10 +22,20 @@ class SidebarButton extends Component {
         this.props.handleToggle();
     }
 
-    render() {
+    displayIcon() {
         return this.state.open ?
-            <Icon name="close" size={this.props.size} onClick={this.handleIconClick}/> :
-            <Icon name="bars" size={this.props.size} onClick={this.handleIconClick}/>;
+            <Icon name="close" size={this.props.size}/> :
+            <Icon name="sidebar" size={this.props.size}/>
+    }
+
+    render() {
+        return (
+            <Menu secondary attached="top" style={styles.menu}>
+                <Menu.Item onClick={this.handleIconClick} as="a">
+                    {this.displayIcon()}
+                </Menu.Item>
+            </Menu>
+        )
     }
 }
 
