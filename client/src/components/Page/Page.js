@@ -8,7 +8,6 @@ const Page = (props) => {
             <SidebarButton
                 sidebarVisible={props.sidebarVisible}
                 handleToggle={props.handleToggleSidebar}/>
-            Page Content / Route Components Rendered here.
         </Container>
     )
 };
