@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../../components/Layout/Layout';
-import Page from '../../components/Page/Page';
+import Layout from '../Layout/Layout';
+import Page from '../Page/Page';
 
 const App = () => (
     <Layout>
