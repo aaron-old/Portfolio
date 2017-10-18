@@ -1,10 +1,10 @@
 import React from 'react';
-import {router as Router} from './RouteConfig';
+import { router as Router } from './RouteConfig';
 
 const PageRouter = () => (
-    <main>
-      <Router/>
-    </main>
+  <main>
+    <Router />
+  </main>
 );
 
 export default PageRouter;

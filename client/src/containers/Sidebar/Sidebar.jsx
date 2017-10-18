@@ -1,7 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Sidebar, Menu} from 'semantic-ui-react';
+import { Sidebar, Menu } from 'semantic-ui-react';
 import './Sidebar.css';
+
+import { routes } from '../../components/Router/RouteConfig';
+import SidebarLink from '../../components/SidebarLinks/SidebarLink';
 
 class SideBarContainer extends Component {
   constructor(props) {
@@ -13,34 +16,42 @@ class SideBarContainer extends Component {
   }
 
   handleToggleSidebar() {
-    this.setState({visible: !this.state.visible});
+    this.setState({ visible: !this.state.visible });
   }
 
   childrenWithSidebar() {
     return React.Children.map(this.props.children, child =>
-        React.cloneElement(child, {
-          handleToggleSidebar: this.handleToggleSidebar.bind(this),
-          sidebarVisible: this.state.visible,
-        }));
+      React.cloneElement(child, {
+        handleToggleSidebar: this.handleToggleSidebar.bind(this),
+        sidebarVisible: this.state.visible,
+      }));
   }
 
   render() {
-    const {visible} = this.state;
+    const { visible } = this.state;
     return (
-        <Sidebar.Pushable className="sidebar-container">
-          <Sidebar
-              as={Menu}
-              animation="push"
-              width="thin"
-              visible={visible}
-              icon="labeled"
-              vertical
-              inverted
-          />
-          <Sidebar.Pusher>
-            {this.childrenWithSidebar()}
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+      <Sidebar.Pushable className="sidebar-container">
+        <Sidebar
+          as={Menu}
+          animation="push"
+          width="thin"
+          visible={visible}
+          icon="labeled"
+          vertical
+          inverted
+        >
+          {routes.map(({ name, path }) => (
+            <SidebarLink
+              name={name}
+              path={path}
+              key={name}
+            />
+          ))}
+        </Sidebar>
+        <Sidebar.Pusher>
+          {this.childrenWithSidebar()}
+        </Sidebar.Pusher>
+      </Sidebar.Pushable>
     );
   }
 }
