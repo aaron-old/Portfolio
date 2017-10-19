@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Sidebar, Menu } from 'semantic-ui-react';
 import './Sidebar.css';
-
 import { routes } from '../../components/Router/RouteConfig';
-import SidebarLink from '../../components/SidebarLinks/SidebarLink';
+import SidebarLink from '../../components/SidebarLink/SidebarLink';
 
 class SideBarContainer extends Component {
   constructor(props) {
@@ -42,7 +41,7 @@ class SideBarContainer extends Component {
         >
           {routes.map(({ name, path }) => (
             <SidebarLink
-              name={name}
+              name={name.toUpperCase()}
               path={path}
               key={name}
             />
